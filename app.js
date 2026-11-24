@@ -163,7 +163,11 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-go]'
 document.addEventListener('keydown', e => { if (keyHandler && !e.metaKey && !e.ctrlKey && !e.altKey) keyHandler(e); });
 
 /* ---------- theme ---------- */
-function applyTheme() { if (S.theme) document.documentElement.dataset.theme = S.theme; else delete document.documentElement.dataset.theme; }
+function applyTheme() {
+  if (S.theme) document.documentElement.dataset.theme = S.theme; else delete document.documentElement.dataset.theme;
+  const dark = S.theme ? S.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const b = document.getElementById('themeBtn'); if (b) b.textContent = dark ? '☀️' : '🌙';
+}
 $('#themeBtn').onclick = () => {
   const dark = S.theme ? S.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
   S.theme = dark ? 'light' : 'dark'; save(); applyTheme();
@@ -434,6 +438,7 @@ function quiz({ key, mode, n }) {
       <button class="btn primary next" id="next">${i + 1 < order.length ? 'Next →' : 'See results'}</button>`;
     $('#say2').onclick = () => speak(w.w);
     $('#next').onclick = next; $('#next').focus({ preventScroll: true });
+    requestAnimationFrame(() => $('#next').scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
     const q = app.querySelector('.qhead .combo'); q.textContent = combo >= 2 ? `🔥 ${combo} in a row` : `Score ${score}`; q.classList.toggle('hot', combo >= 3);
   }
   function next() { i++; show(); }

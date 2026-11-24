@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#14213d">
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f131b" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Moe CELPIP">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
 <title>CELPIP Flashcards</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
@@ -18,9 +25,9 @@
     <span><b>CELPIP Flashcards</b><small>Moe’s road to CLB 10 · مسیر نمره‌ی ۱۰</small></span>
   </button>
   <nav class="tabs">
-    <button data-go="home" class="on">Practice</button>
-    <button data-go="list">Word list</button>
-    <button data-go="stats">Progress</button>
+    <button data-go="home" class="on"><span class="ti">🃏</span><span>Practice</span></button>
+    <button data-go="list"><span class="ti">📚</span><span>Words</span></button>
+    <button data-go="stats"><span class="ti">📈</span><span>Progress</span></button>
   </nav>
   <button class="icon" id="themeBtn" title="Light / dark" aria-label="Toggle dark mode">◐</button>
 </header>
