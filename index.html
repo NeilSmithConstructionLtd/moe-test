@@ -29,13 +29,18 @@
     <button data-go="list"><span class="ti">📚</span><span>Words</span></button>
     <button data-go="stats"><span class="ti">📈</span><span>Progress</span></button>
   </nav>
-  <button class="icon" id="themeBtn" title="Light / dark" aria-label="Toggle dark mode">◐</button>
+  <div class="hdr-right">
+    <span class="xp-pill" id="xpPill" title="Your XP and level"><span class="xp-star">⭐</span><b id="xpNum">0</b><small>Lv <span id="lvNum">1</span></small></span>
+    <button class="icon" id="soundBtn" title="Sound" aria-label="Toggle sound">🔊</button>
+    <button class="icon" id="themeBtn" title="Light / dark" aria-label="Toggle dark mode">◐</button>
+  </div>
 </header>
 
 <main id="app"></main>
 <footer class="foot">Made for Moe 🍁 Good luck on test day! · <span class="fa">موفق باشی!</span></footer>
 
 <script src="words.js"></script>
+<script src="fx.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
