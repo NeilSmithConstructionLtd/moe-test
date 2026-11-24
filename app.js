@@ -200,6 +200,10 @@ function home() {
   const level = Math.floor(S.xp / 500) + 1, lvlPct = (S.xp % 500) / 5;
   let html = `
   <section class="hero">
+    <div class="moe">
+      <div class="moe-pic"><img src="images/moe.jpg" alt="Moe" width="180" height="180"><span class="moe-badge">🎯 CLB 10</span></div>
+      <div class="moe-name"><b>Moe</b><span>Road to Canadian PR 🍁</span></div>
+    </div>
     <div class="hero-main">
       <div class="hello-row"><div class="hello">${done >= S.goal ? 'Daily goal done — great work! 🎉' : done ? 'Keep going, you are on a roll!' : 'Ready for today’s practice?'}</div><button class="hello more" id="nextMotto" title="Another motivation">↻ another one</button></div>
       <h1 class="motto">${esc(mEn)}</h1>
@@ -339,7 +343,7 @@ function study({ key }) {
     confetti();
     const pct = Math.round(tally.good / Math.max(1, tally.good + tally.hard + tally.again) * 100);
     app.innerHTML = `<div class="result"><div class="emoji">${pct >= 80 ? '🏆' : pct >= 50 ? '💪' : '🌱'}</div><h1>Session complete!</h1>
-    <p class="sub">${done} cards reviewed · آفرین، ادامه بده!</p><p class="cheer">${esc(motto()[0])}</p>
+    <p class="sub">${done} cards reviewed · آفرین، ادامه بده!</p><div class="cheer-row"><img src="images/moe.jpg" alt="" class="av"><p class="cheer">${esc(motto()[0])}</p></div>
     <div class="tally"><div class="t-good"><b>${tally.good}</b>Got it</div><div class="t-hard"><b>${tally.hard}</b>Hard</div><div class="t-again"><b>${tally.again}</b>Again</div></div>
     <div class="row-btns"><button class="btn primary" id="more">Study more</button><button class="btn" id="qz">🎯 Quiz this deck</button><button class="btn" id="hm">Home</button></div></div>`;
     $('#more').onclick = () => go('study', { key });
@@ -438,7 +442,7 @@ function quiz({ key, mode, n }) {
     if (pct >= 70) confetti();
     app.innerHTML = `<div class="result"><div class="emoji">${pct >= 90 ? '🏆' : pct >= 70 ? '🎉' : pct >= 50 ? '💪' : '📚'}</div>
     <div class="big">${score}/${order.length}</div><h1>${pct >= 90 ? 'Outstanding!' : pct >= 70 ? 'Great job!' : pct >= 50 ? 'Good effort!' : 'Keep practising!'}</h1>
-    <p class="cheer">${pct >= 70 ? 'That\u2019s CLB 9+ energy, Moe! Keep it up.' : 'Every mistake here is one you won\u2019t make on test day, Moe.'}</p><p class="sub">${pct}% correct · best streak 🔥 ${best}${missed.length ? ' · missed words were added to your review pile' : ''}</p>
+    <div class="cheer-row"><img src="images/moe.jpg" alt="" class="av"><p class="cheer">${pct >= 70 ? 'That\u2019s CLB 9+ energy, Moe! Keep it up.' : 'Every mistake here is one you won\u2019t make on test day, Moe.'}</p></div><p class="sub">${pct}% correct · best streak 🔥 ${best}${missed.length ? ' · missed words were added to your review pile' : ''}</p>
     ${missed.length ? `<div class="missed"><h2>Review these</h2>${missed.map(id => `<div><b>${esc(WORDS[id].w)}</b><span class="fa">${esc(WORDS[id].fa)}</span></div>`).join('')}</div>` : ''}
     <div class="row-btns"><button class="btn primary" id="again">Try again</button>${missed.length ? '<button class="btn" id="rev">🃏 Flashcards for missed</button>' : ''}<button class="btn" id="hm">Back to deck</button></div></div>`;
     $('#again').onclick = () => go('quiz', { key, mode, n });
